@@ -1,6 +1,8 @@
 import pandas as pd
 import scipy.stats as scs
 import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
 
 dane_mozgowe = pd.read_csv('files/brain_size.csv', sep=';', na_values='.')
 print(dane_mozgowe.head())
@@ -20,6 +22,14 @@ macierz = [dane_mozgowe['FSIQ'], dane_mozgowe['VIQ'], dane_mozgowe['PIQ'], dane_
            dane_mozgowe['Height'], dane_mozgowe['MRI_Count']]
 macierz_korelacji = np.corrcoef(macierz).round(2)
 print(macierz_korelacji)
+
+macierz_df = dane_mozgowe[['FSIQ', 'PIQ', 'VIQ', 'Weight', 'Height']]
+mac_korelacji = macierz_df.corr().round(2)
+sns.heatmap(mac_korelacji, annot=True)
+plt.show()
+
+
+print(mac_korelacji)
 
 wspolczynnik_pearson_2, pvalue_2 = scs.pearsonr(dane_mozgowe['FSIQ'], dane_mozgowe['Height'])
 print('Współczynnik korelacji Pearsona FSIQ i Height:', wspolczynnik_pearson_2.round(2))
