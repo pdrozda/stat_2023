@@ -28,6 +28,8 @@ mac_korelacji = macierz_df.corr().round(2)
 sns.heatmap(mac_korelacji, annot=True)
 plt.show()
 
+data = pd.read_excel(io = 'files/regresja.xls', sheet_name='Zadanie2')
+print(data.head())
 
 print(mac_korelacji)
 
