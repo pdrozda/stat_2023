@@ -1,1 +1,2 @@
 # procedura instalacji cassandry na Windows
+1. Instalacja Python
